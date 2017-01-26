@@ -35,25 +35,26 @@ def make_drinks(coffee_queue):
     drinks_made = []
 
     while time_counter < 101:
-        if emp1.time_avail <= time_counter:
-            # if the order is placed after the employee becomes available
-            # the start time will be when the order is placed
-            if next["order_time"] > emp1.time_avail:
-                start_time = next["order_time"]
-            else:
-                start_time = emp1.time_avail
+        check_employee_status(emp1)
+        # if emp1.time_avail <= time_counter:
+        #     # if the order is placed after the employee becomes available
+        #     # the start time will be when the order is placed
+        #     if next["order_time"] > emp1.time_avail:
+        #         start_time = next["order_time"]
+        #     else:
+        #         start_time = emp1.time_avail
 
-            drinks_made.append({"order_id": next["order_id"],
-                                "start_time": start_time,
-                                "barista_id": emp1.emp_id})
+        #     drinks_made.append({"order_id": next["order_id"],
+        #                         "start_time": start_time,
+        #                         "barista_id": emp1.emp_id})
 
-            brew_time = find_brew_time(next["type"])
-            emp1.time_avail += brew_time
+        #     brew_time = find_brew_time(next["type"])
+        #     emp1.time_avail += brew_time
 
-            if coffee_queue.isEmpty():
-                break
-            else:
-                next = coffee_queue.dequeue()
+        #     if coffee_queue.isEmpty():
+        #         break
+        #     else:
+        #         next = coffee_queue.dequeue()
 
         time_counter += 1
 
@@ -70,6 +71,26 @@ def find_brew_time(order_type):
     return brew_time
 
 
+def check_employee_status(emp):
+    if emp.time_avail <= time_counter:
+    # if the order is placed after the employee becomes available
+    # the start time will be when the order is placed
+        if next["order_time"] > emp.time_avail:
+            start_time = next["order_time"]
+        else:
+            start_time = emp.time_avail
+
+        drinks_made.append({"order_id": next["order_id"],
+                            "start_time": start_time,
+                            "barista_id": emp.emp_id})
+
+        brew_time = find_brew_time(next["type"])
+        emp1.time_avail += brew_time
+
+        if coffee_queue.isEmpty():
+            break
+        else:
+            next = coffee_queue.dequeue()
 
 
 #     for i in range(TOTAL_TIME + 1):
