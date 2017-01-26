@@ -28,12 +28,11 @@ class Queue(object):
 
 class Employee(object):
     """Class implementation of an Employee"""
-    def __init__(self, emp_id, time=0, available=True):
+    def __init__(self, emp_id, time_avail=0):
         self.emp_id = emp_id
-        self.time = time
-        self.available = available
+        self.time_avail = time_avail
 
-    def makeCoffee(self, time, time_to_make):
-        self.available = False
-        self.time += time_to_make
-        self.available = True
+    # def makeCoffee(self, time, time_to_make):
+    #     self.available = False
+    #     self.time += time_to_make
+    #     self.available = True
