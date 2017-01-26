@@ -51,6 +51,7 @@ def make_drinks(coffee_queue):
         next = coffee_queue.dequeue()
 
     while time_counter < 101:
+        # Would create a helper function for the below with more time.
         if emp1.time_avail <= time_counter:
             # if the order is placed after the employee becomes available
             # the start time will be when the order is placed
@@ -110,4 +111,5 @@ def find_brew_time(order_type):
 #####################################################################
 # Fill queue with orders of the day, and generate output data.
 fill_queue(order_data)
-print make_drinks(coffee_queue)
+orders_made = make_drinks(coffee_queue)
+print orders_made

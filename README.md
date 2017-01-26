@@ -28,7 +28,7 @@ Tech Stack: Python with json library<br/>
 
 ## <a name="example_in_and_out"></a>Example Input/Output of the Program
 
-Below is example input data of orders made in a given day, ordered by order_time. See file input.json for a full list.
+Below is example input data of orders made in a given day, ordered by ```order_time```. See file ```input.json``` for a full list.
 
 ```
 [
@@ -39,7 +39,7 @@ Below is example input data of orders made in a given day, ordered by order_time
 ]
 ```
 
-Below is example output data. See file output_fifo.json for the expected output given input.json. The output of the solutions should include drinks that each barista makes and the time that the barista starts making the drink. It must be valid json - an array of objects with the following format:
+Below is example output data. See file ```output_fifo.json``` for the expected output given ```input.json```. The output of the solutions should include drinks that each barista makes and the time that the barista starts making the drink. It must be valid json - an array of objects with the following format:
 
 ```
 [
@@ -67,7 +67,9 @@ Design 2 solutions that handle the drink orders. The first is a simple first-in-
 
 ## <a name="explanation"></a>Explanation of Second Algorithm
 
-Explanation of second algorithm will go here...
+Because the time to make one tea and one latte is the same as the time to make one affogato, orders are split into two queues, each assigned to one of the two employees.  Therefore, one employee makes all of the teas and lattes, and one employee makes all the affogatos.  After the orders are split based on type, the orders are made on a FIFO basis.
+
+The first algorithm resulted in 42 orders being completed, while the second algorithm resulted in 44 orders being completed. 
 
 
 ## <a name="install"></a>Installation
