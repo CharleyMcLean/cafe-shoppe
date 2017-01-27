@@ -42,9 +42,11 @@ class TestCase(unittest.TestCase):
         test_tea_queue = test_queues[0]
         test_drinks_made = coffee_shop_2.make_drinks(test_tea_queue,
                                                      coffee_shop_2.emp1)
-        assert test_drinks_made[-1] == {'order_id': 4,
-                                        'barista_id': 1,
-                                        'start_time': 24}
+        # Below is failing.  Showing 'start_time': 24
+        print test_drinks_made[-1]
+        assert test_drinks_made[-1] == {'barista_id': 1,
+                                        'order_id': 4,
+                                        'start_time': 7}
 
     def test_make_drinks2(self):
         test_queues = coffee_shop_2.fill_queue(test_order_data)
@@ -52,9 +54,10 @@ class TestCase(unittest.TestCase):
         test_drinks_made = coffee_shop_2.make_drinks(test_affogato_queue,
                                                      coffee_shop_2.emp1)
         print test_drinks_made[-1]
-        # assert test_drinks_made[-1] == {'order_id': 4,
-                                        # 'barista_id': 1,
-                                        # 'start_time': 24}
+        # Below is failing.  Showing 'start_time': 41
+        assert test_drinks_made[-1] == {'barista_id': 2,
+                                        'order_id': 1,
+                                        'start_time': 0}
 
 
 if __name__ == "__main__":

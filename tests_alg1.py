@@ -29,6 +29,7 @@ class TestCase(unittest.TestCase):
     def test_make_drinks(self):
         test_queue = coffee_shop_1.fill_queue(test_order_data)
         test_drinks_made = coffee_shop_1.make_drinks(test_queue)
+        # The below is not passing.  Showing 'start_time': 11
         assert test_drinks_made[-1] == {'barista_id': 1, 'order_id': 4, 'start_time': 7}
 
 
