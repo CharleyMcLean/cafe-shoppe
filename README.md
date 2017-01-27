@@ -95,16 +95,26 @@ Install the dependencies:
 pip install -r requirements.txt
 ```
 
-Run the file with the algorithm you'd like to test:
+To run the first algorithm and generate its output, type the following commands in the terminal:
 
 ```
-python coffee_shop_1.py
+python -i coffee_shop_1.py
+fill_queue(order_data)
+make_drinks(coffee_queue)
 ```
 
-**or**
+To run the second algorithm and generate its output, type the following commands in the terminal:
 
 ```
-python coffee_shop_.py
+python -i coffee_shop_2.py
+fill_queue(order_data)
+emp1_orders_made = make_drinks(tea_latte_queue, emp1)
+emp2_orders_made = make_drinks(affogato_queue, emp2)
 ```
 
-The orders output will print to the terminal.
+To run the test files, type the following commands in the terminal:
+
+```
+python tests_alg1.py
+python tests_alg2.py
+```

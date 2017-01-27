@@ -106,10 +106,3 @@ def find_brew_time(order_type):
             brew_time = drink["brew_time"]
 
     return brew_time
-
-
-#####################################################################
-# Fill queue with orders of the day, and generate output data.
-fill_queue(order_data)
-orders_made = make_drinks(coffee_queue)
-print orders_made

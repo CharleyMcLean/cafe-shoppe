@@ -96,9 +96,9 @@ def find_brew_time(order_type):
 
 #####################################################################
 # Fill queue with orders of the day, and generate output data.
-fill_queue(order_data)
-emp1_orders_made = make_drinks(tea_latte_queue, emp1)
-emp2_orders_made = make_drinks(affogato_queue, emp2)
+# fill_queue(order_data)
+# emp1_orders_made = make_drinks(tea_latte_queue, emp1)
+# emp2_orders_made = make_drinks(affogato_queue, emp2)
 
-print "Employee 1 made the following tea and latte orders:", emp1_orders_made
-print "Employee 2 made the following tea and latte orders:", emp2_orders_made
+# print "Employee 1 made the following tea and latte orders:", emp1_orders_made
+# print "Employee 2 made the following tea and latte orders:", emp2_orders_made
