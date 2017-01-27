@@ -29,14 +29,14 @@ with open("input.json") as json_file:
         order_data = []
 
 
-def fill_queue(orders_of_the_day):
+def fill_queue(orders_of_the_day, queue_of_the_day):
     """Define a function to fill the queue with the orders of the day."""
     for order in orders_of_the_day:
-        coffee_queue.enqueue(order)
-    return coffee_queue
+        queue_of_the_day.enqueue(order)
+    return queue_of_the_day
 
 
-def make_drinks(coffee_queue):
+def make_drinks(queue_of_the_day, employee1, employee2):
     """Function to create JSON output representing drinks made for the day.
     Drinks are made first come, first served.  Output includes order_id,
     start_time, and barista_id."""
@@ -45,53 +45,53 @@ def make_drinks(coffee_queue):
     next = {}
     time_counter = 0
     drinks_made = []
-    if coffee_queue.isEmpty():
+    if queue_of_the_day.isEmpty():
         return drinks_made
-    if not coffee_queue.isEmpty():
-        next = coffee_queue.dequeue()
+    if not queue_of_the_day.isEmpty():
+        next = queue_of_the_day.dequeue()
 
     while time_counter < 101:
         # Would create a helper function for the below with more time.
-        if emp1.time_avail <= time_counter:
+        if employee1.time_avail <= time_counter:
             # if the order is placed after the employee becomes available
             # the start time will be when the order is placed
-            if next["order_time"] > emp1.time_avail:
+            if next["order_time"] > employee1.time_avail:
                 start_time = next["order_time"]
             else:
-                start_time = emp1.time_avail
+                start_time = employee1.time_avail
 
             drinks_made.append({"order_id": next["order_id"],
                                 "start_time": start_time,
-                                "barista_id": emp1.emp_id})
+                                "barista_id": employee1.emp_id})
 
             brew_time = find_brew_time(next["type"])
-            emp1.time_avail += brew_time
+            employee1.time_avail += brew_time
 
-            if coffee_queue.isEmpty():
+            if queue_of_the_day.isEmpty():
                 break
             else:
-                next = coffee_queue.dequeue()
+                next = queue_of_the_day.dequeue()
 
-        if emp2.time_avail <= time_counter:
+        if employee2.time_avail <= time_counter:
             # if the order is placed after the employee becomes available
             # the start time will be when the order is placed
-            if next["order_time"] > emp2.time_avail:
+            if next["order_time"] > employee2.time_avail:
                 start_time = next["order_time"]
             else:
-                start_time = emp2.time_avail
+                start_time = employee2.time_avail
 
-            drinks_made.append({"barista_id": emp2.emp_id,
+            drinks_made.append({"barista_id": employee2.emp_id,
                                 "start_time": start_time,
                                 "order_id": next["order_id"]
                                 })
 
             brew_time = find_brew_time(next["type"])
-            emp2.time_avail += brew_time
+            employee2.time_avail += brew_time
 
-            if coffee_queue.isEmpty():
+            if queue_of_the_day.isEmpty():
                 break
             else:
-                next = coffee_queue.dequeue()
+                next = queue_of_the_day.dequeue()
 
         time_counter += 1
 

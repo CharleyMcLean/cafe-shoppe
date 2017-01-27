@@ -19,18 +19,27 @@ with open("test_input.json") as json_file:
 class TestCase(unittest.TestCase):
 
     def test_fill_queue(self):
-        test_queue = coffee_shop_1.fill_queue(test_order_data)
+        test_queue = coffee_shop_1.Queue()
+        coffee_shop_1.fill_queue(test_order_data, test_queue)
         first_out = test_queue.dequeue()
-        assert first_out == {"order_id": 1, "order_time": 0, "type": "affogato"}
+        assert first_out == {'order_id': 1,
+                             'order_time': 0,
+                             'type': 'affogato'}
 
     def test_find_brew_time(self):
         assert coffee_shop_1.find_brew_time("tea") == 3
 
     def test_make_drinks(self):
-        test_queue = coffee_shop_1.fill_queue(test_order_data)
-        test_drinks_made = coffee_shop_1.make_drinks(test_queue)
-        # The below is not passing.  Showing 'start_time': 11
-        assert test_drinks_made[-1] == {'barista_id': 1, 'order_id': 4, 'start_time': 7}
+        test_queue = coffee_shop_1.Queue()
+        test_emp3 = coffee_shop_1.Employee(3)
+        test_emp4 = coffee_shop_1.Employee(4)
+        coffee_shop_1.fill_queue(test_order_data, test_queue)
+        test_drinks_made = coffee_shop_1.make_drinks(test_queue, test_emp3, test_emp4)
+        print test_drinks_made
+        # The below is failing.  Showing 'start_time': 11
+        assert test_drinks_made[-1] == {'barista_id': 3,
+                                        'order_id': 4,
+                                        'start_time': 7}
 
 
 if __name__ == "__main__":

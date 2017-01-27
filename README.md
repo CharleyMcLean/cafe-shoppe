@@ -100,7 +100,7 @@ To run the first algorithm and generate its output, type the following commands 
 ```
 python -i coffee_shop_1.py
 fill_queue(order_data)
-make_drinks(coffee_queue)
+make_drinks(coffee_queue, emp1, emp2)
 ```
 
 To run the second algorithm and generate its output, type the following commands in the terminal:
