@@ -99,7 +99,7 @@ To run the first algorithm and generate its output, type the following commands 
 
 ```
 python -i coffee_shop_1.py
-fill_queue(order_data)
+fill_queue(order_data, coffee_queue)
 make_drinks(coffee_queue, emp1, emp2)
 ```
 
@@ -107,9 +107,9 @@ To run the second algorithm and generate its output, type the following commands
 
 ```
 python -i coffee_shop_2.py
-fill_queue(order_data)
-emp1_orders_made = make_drinks(tea_latte_queue, emp1)
-emp2_orders_made = make_drinks(affogato_queue, emp2)
+fill_queues(order_data, tea_latte_queue, affogato_queue)
+make_drinks(tea_latte_queue, emp1)
+make_drinks(affogato_queue, emp2)
 ```
 
 To run the test files, type the following commands in the terminal:

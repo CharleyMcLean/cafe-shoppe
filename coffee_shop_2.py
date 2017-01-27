@@ -34,17 +34,17 @@ tea_latte_queue = Queue()
 affogato_queue = Queue()
 
 
-def fill_queue(orders_of_the_day):
+def fill_queues(orders_of_the_day, queue1_of_the_day, queue2_of_the_day):
     """Define a function to fill the queues with the orders of the day."""
     for order in orders_of_the_day:
         if order["type"] == "affogato":
-            affogato_queue.enqueue(order)
+            queue2_of_the_day.enqueue(order)
         else:
-            tea_latte_queue.enqueue(order)
-    return tea_latte_queue, affogato_queue
+            queue1_of_the_day.enqueue(order)
+    return queue1_of_the_day, queue2_of_the_day
 
 
-def make_drinks(coffee_queue, emp):
+def make_drinks(coffee_queue, employee):
     """Function to create JSON output representing drinks made for the day.
     Drinks are made first come, first served.  Output includes order_id,
     start_time, and barista_id."""
@@ -59,20 +59,20 @@ def make_drinks(coffee_queue, emp):
         next = coffee_queue.dequeue()
 
     while time_counter < 101:
-        if emp.time_avail <= time_counter:
+        if employee.time_avail <= time_counter:
             # if the order is placed after the employee becomes available
             # the start time will be when the order is placed
-            if next["order_time"] > emp.time_avail:
+            if next["order_time"] > employee.time_avail:
                 start_time = next["order_time"]
             else:
-                start_time = emp.time_avail
+                start_time = employee.time_avail
 
             drinks_made.append({"order_id": next["order_id"],
                                 "start_time": start_time,
-                                "barista_id": emp.emp_id})
+                                "barista_id": employee.emp_id})
 
             brew_time = find_brew_time(next["type"])
-            emp.time_avail += brew_time
+            employee.time_avail += brew_time
 
             if coffee_queue.isEmpty():
                 break
